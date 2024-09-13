@@ -1,4 +1,6 @@
-# mobile_app
+#  Group 12 mobile_app
+
+Trần Mai Anh(22010242), Đàm Việt Hưng(22014569)
 
 A new Flutter project.
 
