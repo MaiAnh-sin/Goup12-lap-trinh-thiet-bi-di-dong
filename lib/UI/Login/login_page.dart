@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_app/UI/Login/Register/register_page.dart';
+import 'package:mobile_app/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -185,19 +186,22 @@ class _LoginPageState extends State<LoginPage> {
       height: 50,
       margin: const EdgeInsets.only(top: 70),
       child: ElevatedButton(
-          onPressed: _onHandleLoginSubmit,
-          style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF8875FF),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(4),
-              ),
-              disabledBackgroundColor: Color(0xFF8687E7).withOpacity(0.5)),
-          child: const Text("Login",
-              style: TextStyle(
-                fontSize: 16,
-                fontFamily: "Lato",
-                color: Colors.white,
-              ))),
+        onPressed: _onHandleLoginSubmit,
+        style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFF8875FF),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4),
+            ),
+            disabledBackgroundColor: Color(0xFF8687E7).withOpacity(0.5)),
+        child: const Text(
+          "Login",
+          style: TextStyle(
+            fontSize: 16,
+            fontFamily: "Lato",
+            color: Colors.white,
+          ),
+        ),
+      ),
     );
   }
 
@@ -357,15 +361,18 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _onHandleLoginSubmit() {
-    
-    if( _autoValidate == AutovalidateMode.disabled ) {
+    if (_autoValidate == AutovalidateMode.disabled) {
       setState(() {
         _autoValidate = AutovalidateMode.always;
       });
     }
 
     final isValid = _formKey.currentState?.validate() ?? false;
-    if (isValid) {
+    if (isValid) { 
+      Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );
     } else {}
   }
 
