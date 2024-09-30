@@ -1,15 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_app/UI/Login/Register/register_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,10 +34,10 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               pageTitle(),
               const SizedBox(height: 55),
-              formLogin(),
+              formRegister(),
               orSplit(),
               socialLogin(),
-              createAccount(context),
+              haveAccount(context),
             ],
           ),
         ),
@@ -50,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 40),
       child: Text(
-        "Login",
+        "REGISTER",
         style: TextStyle(
           color: Colors.white.withOpacity(0.87),
           fontFamily: "Lato",
@@ -62,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget formLogin() {
+  Widget formRegister() {
     return Form(
         child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 30),
@@ -73,6 +72,8 @@ class _LoginPageState extends State<LoginPage> {
                 usernameField(),
                 const SizedBox(height: 25),
                 passwordField(),
+                const SizedBox(height: 25),
+                confirmPassword(),
                 loginButton(),
                 
               ],
@@ -158,6 +159,46 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  Widget confirmPassword() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Confirm Password",
+          style: TextStyle(
+            color: Colors.white.withOpacity(0.87),
+            fontFamily: "Lato",
+            fontSize: 20,
+          ),
+        ),
+        Container(
+            margin: EdgeInsets.only(top: 8),
+            child: TextFormField(
+              decoration: InputDecoration(
+                hintText: "Confirm Your Password",
+                hintStyle: TextStyle(
+                  color: Color(0xFF535353),
+                  fontFamily: "Lato",
+                  fontSize: 20,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                fillColor: Color(0xFF1D1D1),
+                filled: true,
+              ),
+              style: TextStyle(
+                color: Colors.white,
+                fontFamily: "Lato",
+                fontSize: 20,
+              ),
+              obscureText: true,
+            ))
+      ],
+    );
+  }
+
   Widget loginButton() {
     return Container(
       width: double.infinity,
@@ -171,7 +212,7 @@ class _LoginPageState extends State<LoginPage> {
                 borderRadius: BorderRadius.circular(4),
               ),
               disabledBackgroundColor: Color(0xFF8687E7).withOpacity(0.5)),
-          child: const Text("Login",
+          child: const Text("Register",
               style: TextStyle(
                 fontSize: 16,
                 fontFamily: "Lato",
@@ -249,7 +290,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Container(
                 margin: const EdgeInsets.only(left: 10),
-                child: const Text("Login with Google",
+                child: const Text("Register with Google",
                     style: TextStyle(
                       fontSize: 16,
                       fontFamily: "Lato",
@@ -291,7 +332,7 @@ class _LoginPageState extends State<LoginPage> {
               Container(
                 margin: const EdgeInsets.only(left: 10),
                 child: const Text(
-                  "Login with Apple",
+                  "Register with Apple",
                   style: TextStyle(
                     fontSize: 16,
                     fontFamily: "Lato",
@@ -304,13 +345,13 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget createAccount(BuildContext context) {
+  Widget haveAccount(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 46, bottom: 20),
       alignment: Alignment.center,
       child: RichText(
         text: TextSpan(
-          text: "Don't have an account?",
+          text: "Already have an account? ",
           style: const TextStyle(
             fontSize: 12,
             fontFamily: "Lato",
@@ -318,7 +359,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           children: [
             TextSpan(
-              text: "Register",
+              text: "Login",
               style: TextStyle(
                 fontSize: 12,
                 fontFamily: "Lato",
@@ -326,20 +367,11 @@ class _LoginPageState extends State<LoginPage> {
               ),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
-                  goToregisterPage(context);
+                  Navigator.pop(context);
                 },
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  void goToregisterPage(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const RegisterPage(),
       ),
     );
   }
