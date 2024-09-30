@@ -10,6 +10,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _formKey = GlobalKey<FormState>();
+  var _autoValidate = AutovalidateMode.disabled;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 40),
       child: Text(
-        "Login",
+        "Login To RestaurantGo",
         style: TextStyle(
           color: Colors.white.withOpacity(0.87),
           fontFamily: "Lato",
@@ -64,6 +67,8 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget formLogin() {
     return Form(
+        key: _formKey,
+        autovalidateMode: _autoValidate,
         child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 30),
             child: Column(
@@ -74,7 +79,6 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 25),
                 passwordField(),
                 loginButton(),
-                
               ],
             )));
   }
@@ -93,27 +97,39 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         Container(
-            margin: EdgeInsets.only(top: 8),
-            child: TextFormField(
-              decoration: InputDecoration(
-                hintText: "Your Username",
-                hintStyle: TextStyle(
-                  color: Color(0xFF535353),
-                  fontFamily: "Lato",
-                  fontSize: 20,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                fillColor: Color(0xFF1D1D1),
-                filled: true,
-              ),
-              style: TextStyle(
-                color: Colors.white,
+          margin: EdgeInsets.only(top: 8),
+          child: TextFormField(
+            decoration: InputDecoration(
+              hintText: "Your Username",
+              hintStyle: TextStyle(
+                color: Color(0xFF535353),
                 fontFamily: "Lato",
                 fontSize: 20,
               ),
-            ))
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(4),
+              ),
+              fillColor: Color(0xFF1D1D1),
+              filled: true,
+            ),
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return "Email is required";
+              }
+              final bool emailValid = RegExp(
+                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                  .hasMatch(value);
+              if (!emailValid) {
+                return "Email is required";
+              }
+            },
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: "Lato",
+              fontSize: 20,
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -132,28 +148,33 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         Container(
-            margin: EdgeInsets.only(top: 8),
-            child: TextFormField(
-              decoration: InputDecoration(
-                hintText: "Your Password",
-                hintStyle: TextStyle(
-                  color: Color(0xFF535353),
-                  fontFamily: "Lato",
-                  fontSize: 20,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                fillColor: Color(0xFF1D1D1),
-                filled: true,
-              ),
-              style: TextStyle(
-                color: Colors.white,
+          margin: EdgeInsets.only(top: 8),
+          child: TextFormField(
+            decoration: InputDecoration(
+              hintText: "Your Password",
+              hintStyle: TextStyle(
+                color: Color(0xFF535353),
                 fontFamily: "Lato",
                 fontSize: 20,
               ),
-              obscureText: true,
-            ))
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(4),
+              ),
+              fillColor: Color(0xFF1D1D1),
+              filled: true,
+            ),
+            validator: (String? value) {
+              if (value == null || value.isEmpty) return "Password required";
+              return null;
+            },
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: "Lato",
+              fontSize: 20,
+            ),
+            obscureText: true,
+          ),
+        ),
       ],
     );
   }
@@ -164,7 +185,7 @@ class _LoginPageState extends State<LoginPage> {
       height: 50,
       margin: const EdgeInsets.only(top: 70),
       child: ElevatedButton(
-          onPressed: () {},
+          onPressed: _onHandleLoginSubmit,
           style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF8875FF),
               shape: RoundedRectangleBorder(
@@ -333,6 +354,19 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  void _onHandleLoginSubmit() {
+    
+    if( _autoValidate == AutovalidateMode.disabled ) {
+      setState(() {
+        _autoValidate = AutovalidateMode.always;
+      });
+    }
+
+    final isValid = _formKey.currentState?.validate() ?? false;
+    if (isValid) {
+    } else {}
   }
 
   void goToregisterPage(BuildContext context) {
