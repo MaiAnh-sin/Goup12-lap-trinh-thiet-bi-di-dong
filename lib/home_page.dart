@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/map_page.dart';
+import 'package:mobile_app/search_page.dart';
+import 'package:mobile_app/user_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,6 +11,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _myIndex = 0;
+  List<Widget> widgetList = const [
+    HomePage(),
+    MapPage(),
+    SearchPage(),
+    UserPage(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +55,14 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+      body: widgetList[_myIndex],
       bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) {
+          setState(() {
+            _myIndex = index;
+          });
+        },
+        currentIndex: _myIndex,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.red,
         unselectedItemColor: Colors.grey,
@@ -69,7 +86,6 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
-
   }
 
   Widget searchBar() {
@@ -95,32 +111,44 @@ class _HomePageState extends State<HomePage> {
   Widget categoryList() {
     return Column(
       children: [
-         Container(
-            height: 100,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                CategoryCircle(text: 'Nướng',imageAsset: 'assets/icons8-grill-42.png',),
-                CategoryCircle(text: 'Lẩu', imageAsset: 'assets/icons8-hot-pot-42.png',),
-                CategoryCircle(text: 'Pizza', imageAsset: 'assets/icons8-pizza-42.png',),
-                CategoryCircle(text: 'Hải sản', imageAsset: 'assets/icons8-seafood-42.png',),
-                CategoryCircle(text: 'Quán nhậu',imageAsset: 'assets/icons8-beer-42.png',),
-              ],
-            ),
-         )
+        Container(
+          height: 100,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              CategoryCircle(
+                text: 'Nướng',
+                imageAsset: 'assets/icons8-grill-42.png',
+              ),
+              CategoryCircle(
+                text: 'Lẩu',
+                imageAsset: 'assets/icons8-hot-pot-42.png',
+              ),
+              CategoryCircle(
+                text: 'Pizza',
+                imageAsset: 'assets/icons8-pizza-42.png',
+              ),
+              CategoryCircle(
+                text: 'Hải sản',
+                imageAsset: 'assets/icons8-seafood-42.png',
+              ),
+              CategoryCircle(
+                text: 'Quán nhậu',
+                imageAsset: 'assets/icons8-beer-42.png',
+              ),
+            ],
+          ),
+        )
       ],
-
     );
   }
-
-  
 }
 
 class CategoryCircle extends StatelessWidget {
   final String imageAsset; // Add imageAsset field
   final String text;
 
-  CategoryCircle({required this.text,required this.imageAsset});
+  CategoryCircle({required this.text, required this.imageAsset});
 
   @override
   Widget build(BuildContext context) {
