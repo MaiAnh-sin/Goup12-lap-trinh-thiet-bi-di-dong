@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_app/UI/Login/Register/register_page.dart';
 import 'package:mobile_app/home_page.dart';
+import 'package:mobile_app/navigation_menu.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -371,7 +372,7 @@ class _LoginPageState extends State<LoginPage> {
     if (isValid) { 
       Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const HomePage()),
+              MaterialPageRoute(builder: (context) => const NavigationMenu()),
             );
     } else {}
   }
