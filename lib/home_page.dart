@@ -55,7 +55,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: widgetList[_myIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) {
           setState(() {
