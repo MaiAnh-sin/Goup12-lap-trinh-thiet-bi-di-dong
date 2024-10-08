@@ -11,50 +11,70 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
+  GoogleMapController? _mapController;
   Geolocator _geolocatorUser = new Geolocator();
   static const LatLng _pGoogleMap = LatLng(20.9721, 105.7749);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: GoogleMap(
-        initialCameraPosition: CameraPosition(
-          target: _pGoogleMap,
-          zoom: 13,
-        ),
-        markers: {
-          Marker(
-              markerId: MarkerId("_current_location"),
-              icon: BitmapDescriptor.defaultMarker,
-              position: _pGoogleMap)
-        },
-      ),
-    );
+  LatLng? _currentPosition;
+  
+    @override
+  void initState() {
+    super.initState();
+    _getUserLocation();
   }
-
-  // Add this package to open settings (optional)
-
-  Future<void> getLocationUpdates() async {
+ Future<void> _getUserLocation() async {
     bool serviceEnabled;
     LocationPermission permission;
 
-    // Check if location services are enabled
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      print('Location services are disabled. Please enable them.');
-      // Optionally, open location settings for the user
-      Geolocator.openLocationSettings();
+      print("Dịch vụ vị trí không khả dụng.");
       return;
     }
 
-    // Check and request permission if necessary
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        print('Location permissions are denied.');
         return;
       }
     }
+
+    if (permission == LocationPermission.deniedForever) {
+      print("Quyền truy cập vị trí bị từ chối vĩnh viễn.");
+      return;
+    }
+    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    setState(() {
+      _currentPosition = LatLng(position.latitude, position.longitude);
+      _mapController?.animateCamera(CameraUpdate.newLatLng(_currentPosition!));
+    });
+  }
+
+   @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _currentPosition == null
+          ? Center(child: CircularProgressIndicator()) // Hiển thị vòng quay nếu chưa có vị trí
+          : GoogleMap(
+              onMapCreated: (GoogleMapController controller) {
+                _mapController = controller;
+              },
+              initialCameraPosition: CameraPosition(
+                target: _currentPosition ?? _pGoogleMap,
+                zoom: 12.0,
+              ),
+              myLocationEnabled: true,
+              myLocationButtonEnabled: true,
+              markers: {
+                Marker(
+                  markerId: const MarkerId("currentLocation"),
+                  position: _currentPosition!,
+                  infoWindow: const InfoWindow(title: "Your Location"),
+                ),
+              },
+            ),
+    );
   }
 }
+
+
