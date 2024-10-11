@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/chatbot.dart';
 import 'package:mobile_app/home_page.dart';
 import 'package:mobile_app/map_page.dart';
 import 'package:mobile_app/search_page.dart';
 import 'package:mobile_app/user_page.dart';
+
 
 class NavigationMenu extends StatefulWidget {
   const NavigationMenu({super.key});
@@ -19,6 +21,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
     SearchPage(),
     UserPage(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +55,20 @@ class _NavigationMenuState extends State<NavigationMenu> {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Navigate to the new page
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Chatbot()), // Replace with your new page
+          );
+        },
+        backgroundColor: Colors.pink,
+        child: Icon(Icons.add), // You can use any icon here
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }
+
+
