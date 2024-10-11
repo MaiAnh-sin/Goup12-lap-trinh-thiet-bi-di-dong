@@ -12,13 +12,12 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        
         body: SearchScreen(),
       ),
     );
-  
   }
 }
+
 class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -29,26 +28,33 @@ class SearchScreen extends StatelessWidget {
         children: [
           // Search Bar
           Container(
-            margin: EdgeInsets.only(bottom: 20),
+            margin: EdgeInsets.only(
+                top: 30,
+                bottom: 20), 
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BoxDecoration(
               color: Colors.red,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(
+                  5), 
             ),
-            child: Row(
+            child: const Row(
               children: [
                 Icon(Icons.location_on, color: Colors.white),
                 SizedBox(width: 10),
                 Expanded(
                   child: Text(
                     'Hà Nội',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight
+                            .bold), 
                   ),
                 ),
               ],
             ),
           ),
-          // Second Search Bar
+
+          // Search Bar
           Container(
             margin: EdgeInsets.only(bottom: 20),
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -56,7 +62,7 @@ class SearchScreen extends StatelessWidget {
               color: Colors.redAccent,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Row(
+            child: const Row(
               children: [
                 Expanded(
                   child: TextField(
@@ -115,7 +121,7 @@ class SearchScreen extends StatelessWidget {
       child: Row(
         children: [
           Icon(Icons.search, color: Colors.grey),
-          SizedBox(width: 10),
+          SizedBox(width: 10, height: 20,),
           Expanded(child: Text(keyword)),
         ],
       ),
