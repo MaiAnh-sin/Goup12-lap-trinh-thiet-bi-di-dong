@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/resultfinding.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -34,8 +35,7 @@ class SearchScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BoxDecoration(
               color: Colors.red,
-              borderRadius: BorderRadius.circular(
-                  5), 
+              borderRadius: BorderRadius.circular(5), 
             ),
             child: const Row(
               children: [
@@ -46,8 +46,7 @@ class SearchScreen extends StatelessWidget {
                     'Hà Nội',
                     style: TextStyle(
                         color: Colors.white,
-                        fontWeight: FontWeight
-                            .bold), 
+                        fontWeight: FontWeight.bold), 
                   ),
                 ),
               ],
@@ -90,14 +89,94 @@ class SearchScreen extends StatelessWidget {
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
               children: [
-                _buildSearchKeyword('yakimono'),
-                _buildSearchKeyword('manwah'),
-                _buildSearchKeyword('isushi'),
-                _buildSearchKeyword('times city'),
-                _buildSearchKeyword('koh yam'),
-                _buildSearchKeyword('aeon mall hà đông'),
-                _buildSearchKeyword('fenghuang'),
-                _buildSearchKeyword('gogi'),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Resultfinding(category: 'Phenikaa'),
+                      ),
+                    );
+                  },
+                  child: _buildSearchKeyword('Phenikaa'),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Resultfinding(category: 'manwah'),
+                      ),
+                    );
+                  },
+                  child: _buildSearchKeyword('manwah'),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Resultfinding(category: 'isushi'),
+                      ),
+                    );
+                  },
+                  child: _buildSearchKeyword('isushi'),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Resultfinding(category: 'times city'),
+                      ),
+                    );
+                  },
+                  child: _buildSearchKeyword('times city'),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Resultfinding(category: 'koh yam'),
+                      ),
+                    );
+                  },
+                  child: _buildSearchKeyword('koh yam'),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Resultfinding(category: 'aeon mall hà đông'),
+                      ),
+                    );
+                  },
+                  child: _buildSearchKeyword('aeon mall hà đông'),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Resultfinding(category: 'Royal'),
+                      ),
+                    );
+                  },
+                  child: _buildSearchKeyword('Royal'),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Resultfinding(category: 'aeon mall hà đông'),
+                      ),
+                    );
+                  },
+                  child: _buildSearchKeyword('aeon mall hà đông'),
+                ),
               ],
             ),
           ),
@@ -113,10 +192,11 @@ class SearchScreen extends StatelessWidget {
 
   Widget _buildSearchKeyword(String keyword) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10), // Reduced height
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
-        borderRadius: BorderRadius.circular(10),
+        border: Border(
+          bottom: BorderSide(color: Colors.grey), // Only bottom border
+        ),
       ),
       child: Row(
         children: [

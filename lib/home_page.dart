@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/resultfinding.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -80,25 +81,75 @@ class _HomePageState extends State<HomePage> {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: [
-              CategoryCircle(
-                text: 'Nướng',
-                imageAsset: 'assets/icons8-grill-42.png',
+               GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Resultfinding(category: 'Nướng'),
+                    ),
+                  );
+                },
+                child: CategoryCircle(
+                  text: 'Nướng',
+                  imageAsset: 'assets/icons8-grill-42.png',
+                ),
               ),
-              CategoryCircle(
-                text: 'Lẩu',
-                imageAsset: 'assets/icons8-hot-pot-42.png',
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Resultfinding(category: 'Lẩu'),
+                    ),
+                  );
+                },
+                child: CategoryCircle(
+                  text: 'Lẩu',
+                  imageAsset: 'assets/icons8-hot-pot-42.png',
+                ),
               ),
-              CategoryCircle(
-                text: 'Pizza',
-                imageAsset: 'assets/icons8-pizza-42.png',
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Resultfinding(category: 'Pizza'),
+                    ),
+                  );
+                },
+                child: CategoryCircle(
+                  text: 'Pizza',
+                  imageAsset: 'assets/icons8-pizza-42.png',
+                ),
               ),
-              CategoryCircle(
-                text: 'Hải sản',
-                imageAsset: 'assets/icons8-seafood-42.png',
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Resultfinding(category: 'Hải sản'),
+                    ),
+                  );
+                },
+                child: CategoryCircle(
+                  text: 'Hải sản',
+                  imageAsset: 'assets/icons8-seafood-42.png',
+                ),
               ),
-              CategoryCircle(
-                text: 'Quán nhậu',
-                imageAsset: 'assets/icons8-beer-42.png',
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Resultfinding(category: 'Quán nhậu'),
+                    ),
+                  );
+                },
+                child: CategoryCircle(
+                  text: 'Quán nhậu',
+                  imageAsset: 'assets/icons8-beer-42.png',
+                ),
               ),
             ],
           ),
@@ -107,7 +158,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
+  
 class CategoryCircle extends StatelessWidget {
   final String imageAsset; // Add imageAsset field
   final String text;
