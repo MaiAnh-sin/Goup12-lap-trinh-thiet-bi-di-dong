@@ -12,9 +12,9 @@ class _UserPageState extends State<UserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-  automaticallyImplyLeading: false,
-  backgroundColor: Colors.red, 
-  toolbarHeight: 120, 
+      automaticallyImplyLeading: false,
+      backgroundColor: Colors.red, 
+      toolbarHeight: 120, 
   title: Column(
     mainAxisAlignment: MainAxisAlignment.center, 
     children: [
