@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app/adminboxchat.dart';
-import 'package:mobile_app/boxchat.dart';
+//import 'package:mobile_app/boxchat.dart';
 import 'package:mobile_app/userboxchat.dart';
+import 'package:mobile_app/profile.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({super.key});
@@ -51,13 +52,21 @@ class _UserPageState extends State<UserPage> {
                   leading: Icon(Icons.person),
                   title: Text('Thông tin tài khoản'),
                   trailing: Icon(Icons.arrow_forward_ios),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UserProfilePage()),
+                    );
+                  },
                 ),
                 ListTile(
                   leading: Icon(Icons.history),
                   title: Text('Lịch sử giao dịch'),
                   trailing: Icon(Icons.arrow_forward_ios),
-                  onTap: () {},
+                  onTap: () {
+                    
+                  },
                 ),
                 ListTile(
                   leading: Icon(Icons.favorite),
@@ -70,7 +79,7 @@ class _UserPageState extends State<UserPage> {
                   title: Text('Trò chuyện với Phenikaa Server'),
                   trailing: Icon(Icons.arrow_forward_ios),
                   onTap: () {
-                     _showUserAdminDialog(context);
+                    _showUserAdminDialog(context);
                   },
                 ),
               ],
@@ -80,7 +89,8 @@ class _UserPageState extends State<UserPage> {
       ),
     );
   }
-   void _showUserAdminDialog(BuildContext context) {
+
+  void _showUserAdminDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -94,7 +104,9 @@ class _UserPageState extends State<UserPage> {
                 Navigator.pop(context); // Close the dialog
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => UserBoxChat()), // Navigate to user chat
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          UserBoxChat()), // Navigate to user chat
                 );
               },
             ),
@@ -110,6 +122,7 @@ class _UserPageState extends State<UserPage> {
       },
     );
   }
+
   void _showAdminPasswordDialog(BuildContext context) {
     TextEditingController passwordController = TextEditingController();
 
@@ -137,7 +150,9 @@ class _UserPageState extends State<UserPage> {
                   Navigator.pop(context); // Close the password dialog
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => AdminBoxChat()), // Navigate to admin chat
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            AdminBoxChat()), // Navigate to admin chat
                   );
                 } else {
                   // Show an error message if the password is incorrect
@@ -153,4 +168,3 @@ class _UserPageState extends State<UserPage> {
     );
   }
 }
-
