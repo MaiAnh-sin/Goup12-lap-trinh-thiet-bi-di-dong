@@ -22,7 +22,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
             ),
             SizedBox(height: 10),
             Text(
-              "Hi, Precious",
+              "Welcome, VIP Member",
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -30,7 +30,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
               ),
             ),
             Text(
-              "Joined Aug, 2022",
+              "Joined: Aug, 2022",
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.grey,
@@ -38,7 +38,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
             ),
             SizedBox(height: 20),
 
-            // Quote of the Day
+            // Special Message or Offer of the Day
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: Container(
@@ -50,7 +50,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                 child: Column(
                   children: [
                     Text(
-                      "Quote of the day",
+                      "Today's Special Offer",
                       style: TextStyle(
                         fontSize: 16,
                         color: Color(0xFF5B2D94),
@@ -59,13 +59,13 @@ class _UserProfilePageState extends State<UserProfilePage> {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      "The time we spend awake is precious, but so is the time we spend asleep.",
+                      "Get a free dessert with any main course purchase!",
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 14, color: Colors.black87),
                     ),
                     SizedBox(height: 5),
                     Text(
-                      "- LEBRON JAMES",
+                      "- Exclusive for VIP Members",
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
@@ -78,7 +78,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
             ),
             SizedBox(height: 20),
 
-            // Zen Master Progress
+            // VIP Level Progress
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: Container(
@@ -90,7 +90,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                 child: Column(
                   children: [
                     Text(
-                      "ZEN MASTER",
+                      "VIP LEVEL",
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.white,
@@ -102,24 +102,24 @@ class _UserProfilePageState extends State<UserProfilePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "220/300",
+                          "1500/2000 Points",
                           style: TextStyle(color: Colors.white),
                         ),
                         SizedBox(width: 10),
                         Expanded(
                           child: LinearProgressIndicator(
-                            value: 220 / 300,
+                            value: 1500 / 2000,
                             color: Colors.yellowAccent,
                             backgroundColor: Colors.white,
                           ),
                         ),
                         SizedBox(width: 10),
-                        Icon(Icons.directions_walk, color: Colors.white),
+                        Icon(Icons.star, color: Colors.white),
                       ],
                     ),
                     SizedBox(height: 5),
                     Text(
-                      "LV 4",
+                      "Level 3",
                       style: TextStyle(color: Colors.white),
                     ),
                   ],
@@ -128,29 +128,29 @@ class _UserProfilePageState extends State<UserProfilePage> {
             ),
             SizedBox(height: 20),
 
-            // Stats, History, Edit Buttons
+            // Rewards, Booking History, and Edit Buttons
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  _buildButton("Stats"),
-                  _buildButton("History"),
-                  _buildButton("Edit"),
+                  _buildButton("Rewards"),
+                  _buildButton("Bookings"),
+                  _buildButton("Edit Profile"),
                 ],
               ),
             ),
             SizedBox(height: 20),
 
-            // Session Stats
+            // Stats for Restaurant Visits
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  _buildStatsColumn("23", "Completed\nSessions"),
-                  _buildStatsColumn("94", "Minutes\nSpent"),
-                  _buildStatsColumn("15 days", "Longest\nStreak"),
+                  _buildStatsColumn("30", "Total\nVisits"),
+                  _buildStatsColumn("1500", "Points\nEarned"),
+                  _buildStatsColumn("15", "Days Since\nLast Visit"),
                 ],
               ),
             ),
@@ -169,7 +169,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                 // Share stats action
               },
               child: Text(
-                "Share My Stats",
+                "Share My VIP Stats",
                 style: TextStyle(color: Colors.white),
               ),
             ),
