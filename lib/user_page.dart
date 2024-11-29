@@ -37,7 +37,7 @@ class _UserPageState extends State<UserPage> {
                   side: BorderSide(color: Colors.white),
                   backgroundColor: Colors.white,
                 ),
-                child: Text('Đăng nhập / Đăng ký'),
+                child: Text('Logout'),
               ),
             ),
           ],
