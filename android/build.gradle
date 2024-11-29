@@ -5,7 +5,7 @@ buildscript {
         mavenCentral() // Use Maven Central
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.0.0' // Update to the latest stable version
+        classpath 'com.google.gms:google-services:4.4.2'// Update to the latest stable version
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }

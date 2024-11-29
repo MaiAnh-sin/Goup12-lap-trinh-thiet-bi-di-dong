@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "617456834209",
-    "project_id": "booking-restaurant-app-a9a59",
-    "storage_bucket": "booking-restaurant-app-a9a59.appspot.com"
+    "project_number": "276602850449",
+    "project_id": "app-mobile-addea",
+    "storage_bucket": "app-mobile-addea.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:617456834209:android:dd194c40050d08d4bb42e0",
+        "mobilesdk_app_id": "1:276602850449:android:659829eef31460a7f0c330",
         "android_client_info": {
           "package_name": "com.example.mobile_app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyArGvqxxIhs-vBGKOQZgXSRE2F6M72HawY"
+          "current_key": "AIzaSyANpJHK93Ro7Jl6O50naNLsZHTZos69QTg"
         }
       ],
       "services": {
